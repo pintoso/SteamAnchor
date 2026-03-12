@@ -185,14 +185,19 @@ class SteamAnchorApp(tk.Tk):
                 data, key=lambda v: v["date"], reverse=True)
             values = [self._format_version(v) for v in self.versions_data]
             self.after(0, self._on_fetch_ok, values)
-        except Exception as e:
-            import traceback
-            with open("fetch_error.log", "w") as f:
-                traceback.print_exc(file=f)
-            self._last_refresh = (
-                time.monotonic() - self.REFRESH_COOLDOWN + self.ERROR_COOLDOWN
-            )
-            self.after(0, self._on_fetch_err)
+        except Exception:
+            try:
+                data = api.fetch_fallback()
+                self.versions_data = sorted(
+                    data, key=lambda v: v["date"], reverse=True)
+                values = [self._format_version(v) for v in self.versions_data]
+                self.after(0, self._on_fetch_ok, values,
+                           "Loaded from fallback.")
+            except Exception:
+                self._last_refresh = (
+                    time.monotonic() - self.REFRESH_COOLDOWN + self.ERROR_COOLDOWN
+                )
+                self.after(0, self._on_fetch_err)
 
     def _on_fetch_ok(self, values, status="Version list updated.", cooldown=True):
         if cooldown:

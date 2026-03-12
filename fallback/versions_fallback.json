@@ -1,0 +1,242 @@
+[
+  {
+    "date": "20230428150517",
+    "manifest": "1682573004",
+    "notes": "Around the time new desktop UI released in beta"
+  },
+  {
+    "date": "20230429120402",
+    "manifest": "1682708537",
+    "notes": "Hotfix"
+  },
+  {
+    "date": "20230531113527",
+    "manifest": "1685488080",
+    "notes": "Preload banner hotfix, last update before new desktop UI and -oldbigpicture removal"
+  },
+  {
+    "date": "20230615094110",
+    "manifest": "1686779606",
+    "notes": "Initial new desktop UI version, -oldbigpicture removed"
+  },
+  {
+    "date": "20230616094017",
+    "manifest": "1686880776",
+    "notes": "Hotfix"
+  },
+  {
+    "date": "20230622105532",
+    "manifest": "1687386907",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20230711162631",
+    "manifest": "1689034492",
+    "notes": "Generic notification sounds, fixes, last update before -vgui removal"
+  },
+  {
+    "date": "20230801221717",
+    "manifest": "1690583737",
+    "notes": "xdg-desktop-portal no longer necessary on Linux, fixes, -vgui removed"
+  },
+  {
+    "date": "20230912101259",
+    "manifest": "1694466342",
+    "notes": "Indonesian language, fixes, removal of steam://restartinuimode/vgui"
+  },
+  {
+    "date": "20230930002005",
+    "manifest": "1696019606",
+    "notes": "Hotfix"
+  },
+  {
+    "date": "20231026162438",
+    "manifest": "1698260427",
+    "notes": "Steam Input and SteamVR improvements, fixes"
+  },
+  {
+    "date": "20231031200154",
+    "manifest": "1698777785",
+    "notes": "Back button fix, other fixes"
+  },
+  {
+    "date": "20231116205033",
+    "manifest": "1700160213",
+    "notes": "Visual tweaks, more info in game pages, other fixes and additions"
+  },
+  {
+    "date": "20231130095245",
+    "manifest": "1701289036",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20231212190321",
+    "manifest": "1702079146",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240111223616",
+    "manifest": "1704936806",
+    "notes": "Workshop upgrades, fixes"
+  },
+  {
+    "date": "20240113112425",
+    "manifest": "1705108172",
+    "notes": "Fix"
+  },
+  {
+    "date": "20240227211905",
+    "manifest": "1708985249",
+    "notes": "New Chromium build, fixes"
+  },
+  {
+    "date": "20240229082406",
+    "manifest": "1709168962",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240308104109",
+    "manifest": "1709846872",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240508075352",
+    "manifest": "1714854927",
+    "notes": "Fixes, CSS class names changed"
+  },
+  {
+    "date": "20240517103907",
+    "manifest": "1715891371",
+    "notes": "Steam Input fixes"
+  },
+  {
+    "date": "20240521073345",
+    "manifest": "1716242052",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240614090842",
+    "manifest": "1718305227",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240619085500",
+    "manifest": "1718751621",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240621083816",
+    "manifest": "1718904662",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240717082107",
+    "manifest": "1721173382",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20240913122103",
+    "manifest": "1726088054",
+    "notes": "Steam Families, fixes"
+  },
+  {
+    "date": "20240918104445",
+    "manifest": "1726604483",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20241107150153",
+    "manifest": "1730853027",
+    "notes": "Windows 7/8/8.1, macOS 10.13/10.14 discontinuation, Steam Game Recording, fixes"
+  },
+  {
+    "date": "20241113093224",
+    "manifest": "1731433018",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20241204072114",
+    "manifest": "1733265492",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20250123105918",
+    "manifest": "1737404083",
+    "notes": "Improved game update management, fixes"
+  },
+  {
+    "date": "20250129125321",
+    "manifest": "1737505969",
+    "notes": "No in-game friend spam when reconnecting, fixes"
+  },
+  {
+    "date": "20250311093241",
+    "manifest": "1737514353",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20250401193354",
+    "manifest": "1743469403",
+    "notes": "Download UI update, fixes"
+  },
+  {
+    "date": "20250424082655",
+    "manifest": "1745269938",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20250429101123",
+    "manifest": "1745876290",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20250521085614",
+    "manifest": "1747701111",
+    "notes": "Fixes"
+  },
+  {
+    "date": "20250701090002",
+    "manifest": "1751317518",
+    "notes": "UI scaling, performance monitor, fixes"
+  },
+  {
+    "date": "20250910074132",
+    "manifest": "1757452101",
+    "notes": "A ton of additions, fixes"
+  },
+  {
+    "date": "20251003030544",
+    "manifest": "1757650573",
+    "notes": "Unity vulnerability fix, manual updates broken"
+  },
+  {
+    "date": "20251006072943",
+    "manifest": "1759461205",
+    "notes": "Re-release"
+  },
+  {
+    "date": "20251118083007",
+    "manifest": "1763422420",
+    "notes": "Suspicious chat detection, Chromium rebuild adds Google API integration, fixes"
+  },
+  {
+    "date": "20251122131734",
+    "manifest": "1763795278",
+    "notes": "Hotfix: reverted Google API integration"
+  },
+  {
+    "date": "20251220095344",
+    "manifest": "1766177208",
+    "notes": "Windows client gets 64-bit support"
+  },
+  {
+    "date": "20260122074724",
+    "manifest": "1769025840",
+    "notes": "More controller support, fixes"
+  },
+  {
+    "date": "20260310091440",
+    "manifest": "1769731672",
+    "notes": "Hardware specs in reviews, fixes"
+  }
+]

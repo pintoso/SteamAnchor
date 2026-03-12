@@ -4,7 +4,11 @@ import re
 import sys
 import subprocess
 
+__version__ = "1.0.1"
+
 BLOG_URL = "https://blog.lightwo.net/steam-client-downgrades-survival-kit.html"
+FALLBACK_URL = "https://raw.githubusercontent.com/pintoso/SteamAnchor/main/fallback/versions_fallback.json"
+USER_AGENT = f"SteamAnchor/{__version__}"
 
 if "__compiled__" in globals():
     _BASE_DIR = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -20,6 +24,22 @@ _ROW_RE = re.compile(
     r'<tr>\s*<td>(\d{14}|N/A)</td>\s*<td>(\d+)</td>\s*<td>(.*?)</td>\s*</tr>',
     re.DOTALL,
 )
+
+
+def _curl(url: str) -> str:
+    """Fetches a URL using native curl. Returns the response body as text."""
+    result = subprocess.run(
+        ["curl", "-s", "-A", USER_AGENT, url],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+        stdin=subprocess.DEVNULL,
+        text=True,
+        timeout=15,
+        creationflags=subprocess.CREATE_NO_WINDOW,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(f"Curl failed with return code {result.returncode}")
+    return result.stdout
 
 
 def _parse_versions(html: str) -> list[dict]:
@@ -57,21 +77,9 @@ def load_cache() -> list | None:
 
 
 def fetch_versions() -> list[dict]:
-    """Scrapes the blog for Steam versions using native curl, caches the result, and returns it."""
+    """Scrapes the blog for Steam versions, caches the result, and returns it."""
     try:
-        result = subprocess.run(
-            ["curl", "-s", "-A", "Mozilla/5.0", BLOG_URL],
-            stdout=subprocess.PIPE,
-            stderr=subprocess.DEVNULL,
-            stdin=subprocess.DEVNULL,
-            text=True,
-            timeout=15,
-            creationflags=subprocess.CREATE_NO_WINDOW
-        )
-        if result.returncode != 0:
-            raise RuntimeError(
-                f"Curl failed with return code {result.returncode}")
-        html_text = result.stdout
+        html_text = _curl(BLOG_URL)
     except Exception as exc:
         raise RuntimeError(f"Connection failure: {exc}") from exc
 
@@ -85,5 +93,19 @@ def fetch_versions() -> list[dict]:
             json.dump(versions, f, indent=2, ensure_ascii=False)
     except OSError:
         pass  # non-fatal
+
+    return versions
+
+
+def fetch_fallback() -> list[dict]:
+    """Fetches the fallback version list from the GitHub repo."""
+    try:
+        body = _curl(FALLBACK_URL)
+        versions = json.loads(body)
+    except Exception as exc:
+        raise RuntimeError(f"Fallback fetch failed: {exc}") from exc
+
+    if not versions:
+        raise RuntimeError("Fallback file is empty.")
 
     return versions
