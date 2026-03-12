@@ -2,6 +2,11 @@
 
 Easily downgrade your Steam client and prevent it from automatically updating on Windows.
 
+<p align="center">
+  <img src="https://i.imgur.com/TxKkYAk.png" width="49%" />
+  <img src="https://i.imgur.com/iyzRMxN.png" width="49%" />
+</p>
+
 ## Features
 
 - **Live Version List**: Fetches the latest available Steam versions online.
