@@ -13,6 +13,7 @@
 !requirements.txt
 !steam_core.py
 !main.py
+!version.txt
 
 # Allow everything inside the assets folder
 !assets/**
