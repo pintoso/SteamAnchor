@@ -1,0 +1,24 @@
+# Ignore everything by default
+*
+
+# Un-ignore directories
+!*/
+
+# --- Whitelist of allowed files ---
+!.gitignore
+!api.py
+!build.py
+!build.bat
+!README.md
+!requirements.txt
+!steam_core.py
+!main.py
+
+# Allow everything inside the assets folder
+!assets/**
+
+# Explicitly ignore some folders so git doesn't waste time looking inside them
+build/
+dist/
+build_venv/
+__pycache__/
