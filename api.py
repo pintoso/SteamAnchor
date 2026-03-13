@@ -3,8 +3,9 @@ import os
 import re
 import sys
 import subprocess
+import urllib.request
 
-__version__ = "1.0.1"
+__version__ = "1.0.2"
 
 BLOG_URL = "https://blog.lightwo.net/steam-client-downgrades-survival-kit.html"
 FALLBACK_URL = "https://raw.githubusercontent.com/pintoso/SteamAnchor/main/fallback/versions_fallback.json"
@@ -26,20 +27,11 @@ _ROW_RE = re.compile(
 )
 
 
-def _curl(url: str) -> str:
-    """Fetches a URL using native curl. Returns the response body as text."""
-    result = subprocess.run(
-        ["curl", "-s", "-A", USER_AGENT, url],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-        stdin=subprocess.DEVNULL,
-        text=True,
-        timeout=15,
-        creationflags=subprocess.CREATE_NO_WINDOW,
-    )
-    if result.returncode != 0:
-        raise RuntimeError(f"Curl failed with return code {result.returncode}")
-    return result.stdout
+def _get(url: str) -> str:
+    """Fetches a URL using urllib."""
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+    with urllib.request.urlopen(req, timeout=15) as resp:
+        return resp.read().decode("utf-8")
 
 
 def _parse_versions(html: str) -> list[dict]:
@@ -79,7 +71,7 @@ def load_cache() -> list | None:
 def fetch_versions() -> list[dict]:
     """Scrapes the blog for Steam versions, caches the result, and returns it."""
     try:
-        html_text = _curl(BLOG_URL)
+        html_text = _get(BLOG_URL)
     except Exception as exc:
         raise RuntimeError(f"Connection failure: {exc}") from exc
 
@@ -100,7 +92,7 @@ def fetch_versions() -> list[dict]:
 def fetch_fallback() -> list[dict]:
     """Fetches the fallback version list from the GitHub repo."""
     try:
-        body = _curl(FALLBACK_URL)
+        body = _get(FALLBACK_URL)
         versions = json.loads(body)
     except Exception as exc:
         raise RuntimeError(f"Fallback fetch failed: {exc}") from exc
